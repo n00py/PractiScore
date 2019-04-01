@@ -24,6 +24,7 @@ def matchCheck(clubURL):
         print("Nothing yet")
 
 def login(url):
+    global notRegistered
     #Start a session so we can relay the cookies with each request
     session = requests.Session()
     # Sets a common UA so we don't look look like a bot
