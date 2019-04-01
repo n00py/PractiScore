@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def matchCheck(clubURL): # Searches the club URL for an cctive match
+def matchCheck(clubURL): # Searches the club URL for an active match
     r = requests.get(clubURL)
     html = r.text
     if html.find("Active Match") != -1:
