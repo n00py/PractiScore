@@ -1,3 +1,4 @@
+import sys
 import time
 import requests
 from bs4 import BeautifulSoup
@@ -58,7 +59,7 @@ def login(url):
         r3 = session.post(url, headers=headers, data=payload)
 
         #TODO: Confirm Registration
-
+        sys.exit(2)
 
     except:
         print("CSRF token or Match ID not found in HTML source")
