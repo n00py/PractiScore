@@ -32,8 +32,8 @@ def login(url):
                'Accept-Encoding': 'none'
                }
     # Credentials used for PractiScore
-    payload = {'username': "USERNAME",
-               'password': "PASSWORD",
+    payload = {'username': "xxxxxxxxx",
+               'password': "xxxxxxxxx",
                }
     # Step 1: Log into PractiScore
     r = session.post("https://practiscore.com/login", headers=headers, data=payload)
@@ -51,28 +51,29 @@ def login(url):
     print("Match ID: " + id)
 
     # Registration Data
-    payload = {'token': nonce,
-                   'first-name': "FIRST_NAME",
-                   'last-name': 'LAST_NAME',
-                   'email': 'EMAIL_ADDRESS',
-                   'division': 'CCP',
-                   'class': 'MM',
-                   'idpa-member-number': 'IDPA_NUMBER',
-                   'idpa-experience': 'Have shot IDPA before',
-                   'safety-officer-certification': 'Not SO certified',
-                   'matchID': id,
-                   'page': url,
-                   'paycode': 'register',
-                   'code': ''
-                   }
+    payload = {'_token': nonce,
+               'first-name': "xxxxx",
+               'last-name': 'xxxxxx',
+               'email': 'xxxxxx',
+               'division': 'CCP',
+               'class': 'MM',
+               'idpa-member-number': 'xxxxxxxx',
+               'idpa-experience': 'Have shot IDPA before',
+               'safety-officer-certification': 'Not SO certified',
+               'matchID': id,
+               'page': url,
+               'paycode': 'register',
+               'code': ''
+               }
     # Register for the match
     r3 = session.post(url, headers=headers, data=payload)
     # Check if the the registration went through
     html = r3.text
-    if html.find("Squadding Selection") != -1:
+    if html.find("You have been registered") != -1:
         print("Successfully registered!")
     else:
         print("something went wrong")
+        print(r2.text)
         print(r3.text)
 
     # After registering, stop the script
@@ -82,5 +83,6 @@ def login(url):
 notRegistered = True
 while notRegistered:
     # Input the Club URL here
-    matchCheck('URL_OF_CLUB')
-    time.sleep(60)
+    matchCheck('https://practiscore.com/clubs/xxxxxxx')
+    # Checks every minute
+    time.sleep(300)
